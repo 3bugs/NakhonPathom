@@ -2,6 +2,7 @@ package th.ac.su.sc.nakhonpathom;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -55,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
                 // แสดงชื่อสถานที่ออกมาใน Toast
                 Toast.makeText(MainActivity.this, placeName, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, PlaceDetailsActivity.class);
+                intent.putExtra("name", place.name);
+                intent.putExtra("image", place.imageRes);
+                startActivity(intent);
             }
         });
     }
