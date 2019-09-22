@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,11 @@ public class PlaceListAdapter extends ArrayAdapter<Place> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         // ทำการ Inflate layout
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflater.inflate(mResource, parent, false);
+
+        View v = convertView;
+        if (v == null) {
+            v = inflater.inflate(mResource, parent, false);
+        }
 
         // เข้าถึงออบเจ็ค Place ตาม position ที่ ListView ขอมา
         Place place = mPlaceList.get(position);
@@ -45,6 +50,9 @@ public class PlaceListAdapter extends ArrayAdapter<Place> {
         // กำหนดชื่ออำเภอลงใน TextView (district_text_view)
         TextView districtTextView = v.findViewById(R.id.district_text_view);
         districtTextView.setText("อำเภอ".concat(place.district));
+
+        ImageView logoImageView = v.findViewById(R.id.logo_image_view);
+        logoImageView.setImageResource(place.imageRes);
 
         return v;
     }

@@ -60,28 +60,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateData() {
-        Place place = new Place("พระปฐมเจดีย์", "เมือง");
+        Place place = new Place("พระปฐมเจดีย์", "เมือง", R.drawable.prathomchedi);
         mPlaceList.add(place);
 
-        place = new Place("บ้านปายนา", "นครชัยศรี");
+        place = new Place("บ้านปายนา", "นครชัยศรี", R.drawable.paina);
         mPlaceList.add(place);
 
-        place = new Place("พิพิธภัณฑ์รถเก่า", "นครชัยศรี");
+        place = new Place("พิพิธภัณฑ์รถเก่า", "นครชัยศรี", R.drawable.jesadatechnikmuseum);
         mPlaceList.add(place);
 
-        place = new Place("ตลาดท่านา", "นครชัยศรี");
+        place = new Place("ตลาดท่านา", "นครชัยศรี", R.drawable.thanamarket);
         mPlaceList.add(place);
 
-        place = new Place("วัดกลางบางแก้ว", "นครชัยศรี");
+        place = new Place("วัดกลางบางแก้ว", "นครชัยศรี", R.drawable.watklangbangkaew);
         mPlaceList.add(place);
 
-        place = new Place("ตลาดน้ำลำพญา", "บางเลน");
+        place = new Place("ตลาดน้ำลำพญา", "บางเลน", R.drawable.lamphayamarket);
         mPlaceList.add(place);
 
-        place = new Place("ตลาดน้ำทุ่งบัวแดง", "บางเลน");
+        place = new Place("ตลาดน้ำทุ่งบัวแดง", "บางเลน", R.drawable.buadang);
         mPlaceList.add(place);
 
-        place = new Place("Tree & Tide Riverside", "บางเลน");
+        place = new Place("Tree & Tide Riverside", "บางเลน", R.drawable.treetide);
         mPlaceList.add(place);
     }
 }
