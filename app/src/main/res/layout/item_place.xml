@@ -29,9 +29,18 @@
         android:paddingStart="?android:attr/listPreferredItemPaddingStart"
         android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
-        app:layout_constraintBottom_toBottomOf="@+id/logo_image_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/logo_image_view"
-        app:layout_constraintTop_toTopOf="@+id/logo_image_view" />
+        app:layout_constraintTop_toTopOf="@+id/logo_image_view"
+        tools:text="ชื่อสถานที่" />
+
+    <TextView
+        android:id="@+id/district_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        app:layout_constraintStart_toStartOf="@+id/place_name_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/place_name_text_view"
+        tools:text="ชื่ออำเภอ" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
