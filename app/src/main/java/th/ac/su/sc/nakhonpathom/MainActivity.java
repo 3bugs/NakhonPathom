@@ -1,6 +1,8 @@
 package th.ac.su.sc.nakhonpathom;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,14 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import th.ac.su.sc.nakhonpathom.adapter.PlaceListAdapter;
+import th.ac.su.sc.nakhonpathom.adapter.RecyclerViewAdapter;
 import th.ac.su.sc.nakhonpathom.model.Place;
 
 public class MainActivity extends AppCompatActivity {
-
-    /*private String[] mPlaceList = new String[]{
-            "พระปฐมเจดีย์", "บ้านปายนา", "พิพิธภัณฑ์รถเก่า", "ตลาดท่านา", "วัดกลางบางแก้ว",
-            "ตลาดน้ำลำพญา", "ตลาดน้ำทุ่งบัวแดง", "Tree & Tide Riverside"
-    };*/
 
     private List<Place> mPlaceList = new ArrayList<>();
 
@@ -32,37 +30,20 @@ public class MainActivity extends AppCompatActivity {
 
         populateData();
 
-        // ทำการอ้างอิงไปยัง ListView ใน layout file
-        ListView placeListView = findViewById(R.id.place_list_view);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
-        // สร้าง adapter
-        PlaceListAdapter adapter = new PlaceListAdapter(
-                MainActivity.this, // context
-                R.layout.item_place, // ระบุ layout สำหรับแต่ละ item ใน list
-                mPlaceList // แหล่งข้อมูล (data source) ในที่นี้คือ อาร์เรย์ของสตริง
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(
+                MainActivity.this,
+                R.layout.item_place,
+                mPlaceList
         );
 
-        // เอา adapter ไปผูกกับ ListView โดยเรียกใช้เมธอด setAdapter ของ ListView
-        placeListView.setAdapter(adapter);
+        LinearLayoutManager lm
+                = new LinearLayoutManager(this);
 
-        // สร้าง listener เพื่อระบุโค้ดการทำงาน เมื่อแต่ละ item ถูกคลิก
-        placeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        recyclerView.setLayoutManager(lm);
+        recyclerView.setAdapter(adapter);
 
-                // อ่านชื่อสถานที่ของ item ที่ถูกคลิก จากอาร์เรย์ mPlaceList มาเก็บลงตัวแปร placeName
-                Place place = mPlaceList.get(position);
-                String placeName = place.name;
-
-                // แสดงชื่อสถานที่ออกมาใน Toast
-                Toast.makeText(MainActivity.this, placeName, Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(MainActivity.this, PlaceDetailsActivity.class);
-                intent.putExtra("name", place.name);
-                intent.putExtra("image", place.imageRes);
-                startActivity(intent);
-            }
-        });
     }
 
     private void populateData() {
