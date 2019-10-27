@@ -96,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         // โค้ดส่วนนี้รันใน Worker Thread
                         mDatabase.placeDao().insertPlace(place);
+
+                        //mPlaceList = mDatabase.placeDao().getAllPlace();
+
                         mPlaceList.clear();
                         mPlaceList.addAll(mDatabase.placeDao().getAllPlace());
 
